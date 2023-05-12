@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="../index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Cadastro Pokémon</title>
+
+    <link 
+     rel="shortcut icon" href="AppImages/ios/144.png"
+      />
+        <meta name="theme-color" content="#317EFB"/>
+        <meta name="description" content="POKEMON"/>
+
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="AppImages/android/android-launchericon-144-144.png">
+   <link rel="apple-touch-icon" href="AppImages/ios/192.png">
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head> 
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="assets/img/pokemon.jpg" alt="">
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastre-se, Mestre Pokémon!</h1>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="firstname">Nickname</label>
+                        <input id = "firstname" type="text" name = "firstname" placeholder="Digite seu nickname">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="idade">Idade</label>
+                        <input id = "idade" type="number" name = "idade" placeholder="Digite sua idade">
+                    </div>
+
+                </div>
+
+                <div class="gender-inputs">
+                    <div class="gender-title">
+                        <h6>Gênero</h6>
+                    </div>
+
+                    <div class="gender-group">
+                        <select id="generos">
+                            <option value="female">Feminino</option>
+                            <option value="male">Masculino</option>
+                            <option value="others">Outros</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="gender-inputs">
+                    <div class="gender-title">
+                        <h6>Tipo do Pokémon</h6>
+                    </div>
+
+                    <div class="gender-group">
+                        <select id="tipopokemon">
+                            <option value="fogo">Fogo</option>
+                            <option value="agua">Água</option>
+                            <option value="planta">Planta</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <div class="input-box">
+                        <label for= "pokename">Nome do Pokémon</label>
+                        <input id = "pokename" type="text" name = "pokename" placeholder="Digite o nome do seu pokémon">
+                    </div>
+
+                </div>
+
+                <div class="gender-inputs">
+                    <div class="gender-title">
+                        <h6>Região</h6>
+                    </div>
+
+                    <div class="gender-group">
+                        <select id="cidadepokemon">
+                            <option value="kanto">Kanto</option>
+                            <option value="hoenn">Hoenn</option>
+                            <option value="johto">Johto</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <button class="continue-button">
+                    <button type="submit" id="submit">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <script>
+        let newWorker;
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js').then(reg => {
+            reg.addEventListener('updatefound', () => {
+              // A wild service worker has appeared in reg.installing!
+              newWorker = reg.installing;
+              newWorker.addEventListener('statechange', () => {
+                // Has network.state changed?
+                switch (newWorker.state) {
+                  case 'installed':
+                    if (navigator.serviceWorker.controller) {
+                      // new update available
+                    }
+                    // No update available
+                    break;
+                }
+              });
+            });
+          });
+          let refreshing;
+          navigator.serviceWorker.addEventListener('controllerchange', function () {
+            if (refreshing) return;
+            window.location.reload();
+            refreshing = true;
+          });
+        }
+    </script>
+
+</body>
+</html>
